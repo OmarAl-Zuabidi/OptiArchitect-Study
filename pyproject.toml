@@ -35,7 +35,6 @@ plot   = ["matplotlib>=3.7"]                     # graphical method
 arabic = ["arabic-reshaper>=3.0", "python-bidi>=0.4.2"]   # Arabic text in consoles / plots
 web    = ["streamlit>=1.30", "pandas>=2.0", "sympy>=1.12", "matplotlib>=3.7"]
 validation = ["scipy>=1.10"]                     # validation/run_validation.py
-all    = ["optiarchitect[nlp,plot,arabic,web,validation]"]
 
 [project.urls]
 Homepage = "https://github.com/OmarAl-Zuabidi/OptiArchitect-Suite"
