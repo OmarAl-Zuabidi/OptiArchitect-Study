@@ -33,9 +33,13 @@ import streamlit as st
 from supabase import create_client
 
 supabase_url = st.secrets.get("SUPABASE_URL")
-supabase_key = st.secrets.get("SUPABASE_KEY")
-supabase = create_client(supabase_url, supabase_key) if supabase_url and supabase_key else None
+supabase_key = (
+    st.secrets.get("SUPABASE_SECRET_KEY") or 
+    st.secrets.get("SUPABASE_KEY") or 
+    st.secrets.get("SUPABASE_PUBLISHABLE_KEY")
+)
 
+supabase = create_client(supabase_url, supabase_key) if supabase_url and supabase_key else None
 from optiarchitect.config import __version__
 from optiarchitect.study import instruments as I
 from optiarchitect.study.scoring import confidence_change, derived_metrics
