@@ -1,0 +1,5 @@
+[console_scripts]
+optiarchitect = optiarchitect.cli:main
+optiarchitect-study = optiarchitect.web:study_main
+optiarchitect-study-admin = optiarchitect.web:study_admin_main
+optiarchitect-web = optiarchitect.web:main

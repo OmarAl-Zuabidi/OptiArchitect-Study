@@ -1,0 +1,237 @@
+{
+  "seed": 20260607,
+  "lp": {
+    "n": 1000,
+    "agree_status": 1000,
+    "optimal": 359,
+    "infeasible": 457,
+    "unbounded": 184,
+    "max_rel_err": 1.7947810810255954e-14,
+    "by_method": {
+      "standard": 92,
+      "dual": 44,
+      "two_phase": 864
+    },
+    "mism": []
+  },
+  "transport": {
+    "n": 500,
+    "unbalanced": 244,
+    "degenerate_repaired": 142,
+    "max_rel_err": 0.0,
+    "ok_all_starts": 500,
+    "improvement": {
+      "nw": 2.2855425288589704,
+      "lc": 1.5853026240028558,
+      "vam": 1.0945168059673611
+    },
+    "iters": {
+      "nw": 6.142,
+      "lc": 3.218,
+      "vam": 1.532
+    }
+  },
+  "assignment": {
+    "n": 1000,
+    "exact": 1000,
+    "rectangular": 895,
+    "maximize": 493,
+    "max_abs_err": 0.0
+  },
+  "nlp": [
+    {
+      "f": "(x-2)**2+1",
+      "goal": "min",
+      "a": 0.0,
+      "b": 5.0,
+      "xstar": 2.0,
+      "errs": {
+        "golden": 8.937287798715943e-09,
+        "fibonacci": 8.811324114788022e-09,
+        "newton": 0.0,
+        "secant": 0.0
+      },
+      "evals": {
+        "golden": 45,
+        "fibonacci": 44,
+        "newton": 4,
+        "secant": 3
+      }
+    },
+    {
+      "f": "x*exp(-x)",
+      "goal": "max",
+      "a": 0.0,
+      "b": 5.0,
+      "xstar": 1.0,
+      "errs": {
+        "golden": 1.9702728337733788e-10,
+        "fibonacci": 1.1102230246251565e-16,
+        "newton": 9.392486788328824e-14,
+        "secant": 1.072784849842634e-08
+      },
+      "evals": {
+        "golden": 45,
+        "fibonacci": 44,
+        "newton": 12,
+        "secant": 7
+      }
+    },
+    {
+      "f": "x**4-3*x**3+2",
+      "goal": "min",
+      "a": 0.0,
+      "b": 3.0,
+      "xstar": 2.25,
+      "errs": {
+        "golden": 5.303265382394784e-09,
+        "fibonacci": 1.3900596229632356e-08,
+        "newton": null,
+        "secant": 1.0477396727992527e-11
+      },
+      "evals": {
+        "golden": 44,
+        "fibonacci": 43,
+        "secant": 9
+      }
+    },
+    {
+      "f": "exp(x)-2*x",
+      "goal": "min",
+      "a": -2.0,
+      "b": 3.0,
+      "xstar": 0.6931471805599453,
+      "errs": {
+        "golden": 7.071628727040036e-09,
+        "fibonacci": 6.6137408882838145e-09,
+        "newton": 8.01581023779363e-14,
+        "secant": 1.6343004727303878e-10
+      },
+      "evals": {
+        "golden": 45,
+        "fibonacci": 44,
+        "newton": 12,
+        "secant": 7
+      }
+    },
+    {
+      "f": "x+1/x",
+      "goal": "min",
+      "a": 0.1,
+      "b": 5.0,
+      "xstar": 1.0,
+      "errs": {
+        "golden": 1.4416778659764873e-08,
+        "fibonacci": 1.4450572072277623e-08,
+        "newton": 1.7763568394002505e-15,
+        "secant": null
+      },
+      "evals": {
+        "golden": 45,
+        "fibonacci": 44,
+        "newton": 16,
+        "secant": 2
+      }
+    },
+    {
+      "f": "cos(x)",
+      "goal": "min",
+      "a": 2.0,
+      "b": 5.0,
+      "xstar": 3.141592653589793,
+      "errs": {
+        "golden": 1.1201844785091453e-08,
+        "fibonacci": 1.0327038335589123e-08,
+        "newton": 0.0,
+        "secant": 9.418066326816188e-11
+      },
+      "evals": {
+        "golden": 44,
+        "fibonacci": 43,
+        "newton": 8,
+        "secant": 6
+      }
+    },
+    {
+      "f": "x**2*log(x)",
+      "goal": "min",
+      "a": 0.1,
+      "b": 2.0,
+      "xstar": 0.6065306597126334,
+      "errs": {
+        "golden": 8.732892187168773e-10,
+        "fibonacci": 3.818657168253026e-09,
+        "newton": 5.329070518200751e-15,
+        "secant": 1.7209667024786768e-10
+      },
+      "evals": {
+        "golden": 43,
+        "fibonacci": 42,
+        "newton": 10,
+        "secant": 7
+      }
+    },
+    {
+      "f": "sin(x)+x/2",
+      "goal": "max",
+      "a": 0.0,
+      "b": 3.0,
+      "xstar": 2.0943951023931953,
+      "errs": {
+        "golden": 2.690544809169637e-08,
+        "fibonacci": 2.684452393708625e-08,
+        "newton": 7.080647179691368e-11,
+        "secant": 1.9860744160382637e-09
+      },
+      "evals": {
+        "golden": 44,
+        "fibonacci": 43,
+        "newton": 10,
+        "secant": 6
+      }
+    }
+  ],
+  "scaling": [
+    {
+      "n": 10,
+      "m": 10,
+      "ours_s": 0.00038267599998675905,
+      "highs_s": 0.0028115329999991445,
+      "iters": 2,
+      "rel_err": 2.287815619784842e-16
+    },
+    {
+      "n": 25,
+      "m": 25,
+      "ours_s": 0.0004084220000208916,
+      "highs_s": 0.0022318439999935435,
+      "iters": 4,
+      "rel_err": 7.089607892621299e-16
+    },
+    {
+      "n": 50,
+      "m": 50,
+      "ours_s": 0.0010489670000026763,
+      "highs_s": 0.003083747999994557,
+      "iters": 9,
+      "rel_err": 1.948224133613114e-15
+    },
+    {
+      "n": 100,
+      "m": 100,
+      "ours_s": 0.005921379000000115,
+      "highs_s": 0.006640908000008494,
+      "iters": 32,
+      "rel_err": 1.3759485754649225e-16
+    },
+    {
+      "n": 200,
+      "m": 200,
+      "ours_s": 0.03413083000000938,
+      "highs_s": 0.034099023999999645,
+      "iters": 101,
+      "rel_err": 5.350416318826058e-16
+    }
+  ],
+  "elapsed_s": 5.336919069290161
+}
