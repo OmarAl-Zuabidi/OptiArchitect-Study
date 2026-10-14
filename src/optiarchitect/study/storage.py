@@ -340,35 +340,45 @@ class StudyStore:
         return self.dir / f"{pid}{ext}"
 
     def save(self, record: dict) -> dict:
-        record["derived"] = derived_metrics(record)
-        pid = record["participant_id"]
-        
-        json_file_path = self._path(pid, ".json")
-        html_file_path = self._path(pid, ".html")
-        
-        _atomic_write(json_file_path, json.dumps(record, ensure_ascii=False, indent=2))
-        _atomic_write(html_file_path, render_report_html(record))
-        
-        if supabase:
-            try:
-                with open(json_file_path, "rb") as f:
+    record["derived"] = derived_metrics(record)
+    pid = record["participant_id"]
+    
+    json_file_path = self._path(pid, ".json")
+    html_file_path = self._path(pid, ".html")
+    
+    _atomic_write(json_file_path, json.dumps(record, ensure_ascii=False, indent=2))
+    _atomic_write(html_file_path, render_report_html(record))
+    
+    self.rebuild_master()
+    
+    if supabase:
+        try:
+            with open(json_file_path, "rb") as f:
+                supabase.storage.from_("study_data").upload(
+                    path=f"participants/{pid}.json",
+                    file=f.read(),
+                    file_options={"content-type": "application/json", "upsert": "true"}
+                )
+            
+            with open(html_file_path, "rb") as f:
+                supabase.storage.from_("study_data").upload(
+                    path=f"participants/{pid}.html",
+                    file=f.read(),
+                    file_options={"content-type": "text/html", "upsert": "true"}
+                )
+            
+            master_path = self.root / "master.csv"
+            if master_path.exists():
+                with open(master_path, "rb") as f:
                     supabase.storage.from_("study_data").upload(
-                        path=f"{pid}.json",
-                        file=f,
-                        file_options={"upsert": "true"}
+                        path="master.csv",
+                        file=f.read(),
+                        file_options={"content-type": "text/csv", "upsert": "true"}
                     )
-                
-                with open(html_file_path, "rb") as f:
-                    supabase.storage.from_("study_data").upload(
-                        path=f"{pid}.html",
-                        file=f,
-                        file_options={"upsert": "true"}
-                    )
-            except Exception as e:
-                st.error(f"فشل الرفع السحابي: {e}")
+        except Exception as e:
+            st.error(f"فشل الرفع السحابي: {e}")
 
-        self.rebuild_master()
-        return record
+    return record
 
     def load(self, pid: str) -> dict:
         return json.loads(self._path(pid, ".json").read_text(encoding="utf-8"))
