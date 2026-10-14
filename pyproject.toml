@@ -35,7 +35,8 @@ dependencies = [
     "python-bidi>=0.4.2",
     "streamlit>=1.30",
     "pandas>=2.0",
-    "scipy>=1.10"
+    "scipy>=1.10",
+    "supabase>=2.0"
 ]
 [project.optional-dependencies]
 nlp    = ["sympy>=1.12"]                         # Part 3 (safe formulas + derivatives)
