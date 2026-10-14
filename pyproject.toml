@@ -4,6 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "optiarchitect"
+version = "1.0.0"
 dynamic = ["version"]
 description = "Bilingual (English/Arabic), verification-first toolkit for teaching operations research"
 readme = "README.md"
