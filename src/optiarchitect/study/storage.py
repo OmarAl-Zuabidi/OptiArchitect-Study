@@ -29,6 +29,13 @@ from email.message import EmailMessage
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Tuple
 
+import streamlit as st
+from supabase import create_client
+
+supabase_url = st.secrets.get("SUPABASE_URL")
+supabase_key = st.secrets.get("SUPABASE_KEY")
+supabase = create_client(supabase_url, supabase_key) if supabase_url and supabase_key else None
+
 from optiarchitect.config import __version__
 from optiarchitect.study import instruments as I
 from optiarchitect.study.scoring import confidence_change, derived_metrics
@@ -335,8 +342,31 @@ class StudyStore:
     def save(self, record: dict) -> dict:
         record["derived"] = derived_metrics(record)
         pid = record["participant_id"]
-        _atomic_write(self._path(pid, ".json"), json.dumps(record, ensure_ascii=False, indent=2))
-        _atomic_write(self._path(pid, ".html"), render_report_html(record))
+        
+        json_file_path = self._path(pid, ".json")
+        html_file_path = self._path(pid, ".html")
+        
+        _atomic_write(json_file_path, json.dumps(record, ensure_ascii=False, indent=2))
+        _atomic_write(html_file_path, render_report_html(record))
+        
+        if supabase:
+            try:
+                with open(json_file_path, "rb") as f:
+                    supabase.storage.from_("study_data").upload(
+                        path=f"{pid}.json",
+                        file=f,
+                        file_options={"upsert": "true"}
+                    )
+                
+                with open(html_file_path, "rb") as f:
+                    supabase.storage.from_("study_data").upload(
+                        path=f"{pid}.html",
+                        file=f,
+                        file_options={"upsert": "true"}
+                    )
+            except Exception as e:
+                st.error(f"فشل الرفع السحابي: {e}")
+
         self.rebuild_master()
         return record
 
