@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+.venv/
+venv/
+env/
+# Tools / caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+# Streamlit
+.streamlit/secrets.toml
+# Output produced by the program
+optiarchitect_lp_plot.png
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+
+# Student-study data: PERSONAL DATA - never commit
+study_data/
+*.study.json

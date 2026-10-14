@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using these metadata."
+title: "OptiArchitect: a bilingual, verification-first toolkit for teaching operations research"
+type: software
+version: 1.0.0
+date-released: "2026-10-07"
+license: MIT
+repository-code: "https://github.com/OmarAl-Zuabidi/OptiArchitect-Suite"
+url: "https://github.com/OmarAl-Zuabidi/OptiArchitect-Suite"
+abstract: >-
+  OptiArchitect is an open-source Python toolkit that teaches the core algorithms of
+  operations research (simplex variants, transportation and assignment problems, and
+  single-variable non-linear optimization) while verifying every answer it produces.
+  It offers an interactive English/Arabic console, a Streamlit web application and a
+  Python API on one shared solver core.
+authors:
+  - family-names: "Al-Zuabidi"
+    given-names: "Omar Ahmed Mohammed"
+    orcid: "https://orcid.org/0009-0000-2766-7727"
+    affiliation: "Department of Mathematics and Computer Applications, College of Science, Al-Nahrain University, Baghdad, Iraq"
+keywords:
+  - operations research
+  - linear programming
+  - simplex method
+  - transportation problem
+  - assignment problem
+  - nonlinear optimization
+  - education
+  - arabic
+# doi: "10.5281/zenodo.23231207"   # uncomment ONLY after checking that this DOI resolves to the v1.0.0 record
